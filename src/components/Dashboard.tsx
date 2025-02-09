@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import BlogCard from "./BlogCard";
-import { fetchBlogPosts } from "../api/posts.api";
+import { fetchBlogPosts, getBlodDetails } from "../api/posts.api";
 import {BlogPost} from "../utils/types"
 import LoginImage from "../assests/images/blogLoginWallPaper.jpg"
 import { handleLogin } from "../api/login.api";
+import DetailedBlogCard from "./DetailedBlogCard";
 
 
 
@@ -11,8 +12,9 @@ import { handleLogin } from "../api/login.api";
 export const DashBoard : React.FC = () => {
 
 
- const [isLoggedIn,setIsLoggedIn] = useState<Boolean>(false)
- const [posts,setPosts] = useState<BlogPost[]|undefined>(undefined)
+ const [isLoggedIn,setIsLoggedIn] = useState<Boolean>(false);
+ const [posts,setPosts] = useState<BlogPost[]|undefined>(undefined);
+ const [blogDetails,setBlogDetils] = useState<BlogPost|undefined>(undefined);
 
  useEffect(() => {
   // Check if there's a token in the URL when the app loads
@@ -49,7 +51,10 @@ useEffect(() => {
 }, [isLoggedIn]);
 
 
-
+const handleCardClick = async (id:number) =>{
+   const details =  await getBlodDetails(id)
+   setBlogDetils(details)
+}
 
  return(<>
  <h1>Blog App</h1>
@@ -65,9 +70,11 @@ useEffect(() => {
           <h2>Welcome to the Blog!</h2>
           <div style={{justifySelf:"center", width: "700px"}}>
           <div className="posts" style={{ display:"flex", flexDirection:"column", borderRadius: "10px", marginTop: "2%", padding: "1%", }}>
-            {posts?.map(post => (
-              <BlogCard key={post.id} post={post} />
-            ))}
+            {!blogDetails?posts?.map(post => (
+              <BlogCard key={post.id} post={post} onClick={()=>handleCardClick(post.id)} />
+            )):
+            <DetailedBlogCard blogDetails={blogDetails} />
+            }
           </div>
           </div>
         </div>

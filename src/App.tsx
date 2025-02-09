@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { BlogPost } from './utils/types';
 import BlogCard from './components/BlogCard';
 import './App.css'
