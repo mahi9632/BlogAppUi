@@ -7,7 +7,6 @@ interface DetailedBlogCardProps {
 
 const DetailedBlogCard: React.FC<DetailedBlogCardProps> = ({ blogDetails}) => {
  const {title,content}  = blogDetails;
- console.log(blogDetails.id,"lgl1");
  
   return (
     <div className="blog-card" style={{backgroundColor:"#D3D3D3"}} >

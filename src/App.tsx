@@ -7,11 +7,6 @@ import { DashBoard } from "./components/Dashboard";
 
 
 const App: React.FC = () => {
-  const [token, setToken] = useState<string | null>(null);
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-
- 
-
 
   return (
     <div className="App">

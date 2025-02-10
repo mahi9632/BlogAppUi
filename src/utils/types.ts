@@ -14,4 +14,8 @@ export interface Post {
  content: string;
 }
 
+export interface FormData {
+ title: string;
+ content: string;
+}
 
