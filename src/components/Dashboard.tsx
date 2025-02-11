@@ -69,7 +69,9 @@ export const DashBoard: React.FC = () => {
         <div style={{ justifySelf: "center", width: "700px" }}>
           <div className="posts" style={{ display: "flex", flexDirection: "column", borderRadius: "10px", marginTop: "2%", padding: "1%", }}>
             {!blogDetails ? posts?.map(post => (
-              <BlogCard key={post.id} post={post} onClick={() => handleCardClick(post.id)} />
+              <div  data-test-id={`blogCard${post.id}`} >
+              <BlogCard  key={post.id} post={post} onClick={() => handleCardClick(post.id)} />
+              </div>
             )) :
               <div>
                 <DetailedBlogCard blogDetails={blogDetails} />

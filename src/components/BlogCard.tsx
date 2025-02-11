@@ -4,11 +4,12 @@ import { BlogPost } from '../utils/types';
 interface BlogCardProps {
   post: BlogPost;
   onClick: ()=>Promise<void>;
+  key:number
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post ,onClick}) => {
   return (
-    <div onClick={onClick} style={{
+    <div  onClick={onClick} style={{
       opacity: 0.9, 
       backgroundColor:"#D3D3D3",
       borderRadius:3,
