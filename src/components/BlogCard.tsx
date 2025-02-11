@@ -8,7 +8,12 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ post ,onClick}) => {
   return (
-    <div onClick={onClick} className="blog-card" style={{backgroundColor:"#D3D3D3"}} >
+    <div onClick={onClick} style={{
+      opacity: 0.9, 
+      backgroundColor:"#D3D3D3",
+      borderRadius:3,
+      padding:"2%"
+     }}>
       <h3>{post.title}</h3>
     </div>
   );

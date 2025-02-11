@@ -3,10 +3,10 @@ import BlogCard from "./BlogCard";
 import { fetchBlogPosts, getBlodDetails } from "../api/posts.api";
 import { BlogPost } from "../utils/types"
 import LoginImage from "../assests/images/blogLoginWallPaper.jpg"
-import { handleLogin } from "../api/login.api";
 import DetailedBlogCard from "./DetailedBlogCard";
 import { CreatePost } from "./CreatePost";
 import { ToastContainer } from "react-toastify";
+import StaticBlogLoginPage from "./StaticBlogLoginPage";
 
 
 
@@ -61,18 +61,11 @@ export const DashBoard: React.FC = () => {
     setIsLoggedIn(false)
   }
 
+
   return (<>
-    <h1>Blog App</h1>
-    {!isLoggedIn ? (
-      <div style={{ flex: 1, justifyItems: "center" }}>
-        <div style={{ backgroundColor: "#D3D3D3", borderRadius: "10px", marginTop: "2%", padding: "1%", width: "500px" }}>
-          <img src={LoginImage} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          <button className="login-with-google-btn" onClick={handleLogin} style={{ marginTop: "1%" }}>Login with Google</button>
-        </div>
-      </div>
-    ) : (
+    {!isLoggedIn ? <StaticBlogLoginPage/> : (
       <div>
-        <h2>Welcome to the Blog!</h2>
+        <h1>Blog App</h1>
         <div style={{ justifySelf: "center", width: "700px" }}>
           <div className="posts" style={{ display: "flex", flexDirection: "column", borderRadius: "10px", marginTop: "2%", padding: "1%", }}>
             {!blogDetails ? posts?.map(post => (

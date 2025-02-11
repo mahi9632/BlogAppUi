@@ -9,9 +9,11 @@ const DetailedBlogCard: React.FC<DetailedBlogCardProps> = ({ blogDetails}) => {
  const {title,content}  = blogDetails;
  
   return (
-    <div className="blog-card" style={{backgroundColor:"#D3D3D3"}} >
-      <h3>{title}</h3>
-      <h3>{content}</h3>
+    <div  style={{backgroundColor:"#D3D3D3", borderRadius:3,padding:"2%"}} >
+      <div style={{display:"flex",padding:"2%", fontWeight:'bolder'}}>
+            {title}
+      </div>
+      <div style={{ textAlign: "justify",paddingLeft:"3%" }}>{content}</div>
 
     </div>
   );
